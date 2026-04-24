@@ -15,7 +15,13 @@ The system emphasizes:
 - data integrity through relational constraints
 
 ---
+## System Context
 
+This LIMS models a laboratory workflow where biological or environmental samples are tracked through experimental processing, instrument usage, and project-based analysis requests.
+
+The system prioritizes traceability of samples, operational tracking of instruments, and structured association between laboratory work and client-driven projects.
+
+---
 ## System Design
 
 The database is structured around core laboratory entities:
