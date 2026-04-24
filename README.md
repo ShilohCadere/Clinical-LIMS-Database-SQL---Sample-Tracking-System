@@ -1,6 +1,6 @@
 # Laboratory Information Management System (LIMS)
 
-Relational database system designed to model laboratory sample tracking, instrument usage, and project-based workflow management in a structured research environment.
+Clinical LIMS-style database for structured sample tracking, metadata management, and laboratory workflow organization within an NGS pipeline system.
 
 ---
 
