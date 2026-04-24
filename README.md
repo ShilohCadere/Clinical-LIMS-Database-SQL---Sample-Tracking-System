@@ -1,26 +1,19 @@
 # Laboratory Information Management System (LIMS)
 
-Clinical LIMS-style database for structured sample tracking, metadata management, and laboratory workflow organization within an NGS pipeline system.
+Clinical LIMS database for structured sample tracking and metadata management within an NGS pipeline system supporting QC and downstream sequencing analysis.
 
 ---
 
-## Overview
-
-This project implements a simplified Laboratory Information Management System (LIMS) using a relational database design. It models how biological or chemical samples move through a lab workflow—from project assignment to sample processing and instrument usage.
-
-The system emphasizes:
-- structured sample tracking
-- instrument assignment and status management
-- project-based workflow organization
-- data integrity through relational constraints
-
----
 ## System Context
 
-This LIMS models a laboratory workflow where biological or environmental samples are tracked through experimental processing, instrument usage, and project-based analysis requests.
+This LIMS models the data management layer of a clinical NGS pipeline, where biological samples are tracked from project initiation through processing and instrument usage.
 
-The system prioritizes traceability of samples, operational tracking of instruments, and structured association between laboratory work and client-driven projects.
-
+It provides structured traceability for:
+- sample metadata and project association
+- instrument assignment and usage tracking
+- laboratory workflow state management
+- downstream compatibility with QC and sequencing analysis systems
+  
 ---
 ## System Design
 
@@ -107,14 +100,13 @@ This system was designed to simulate a real-world laboratory environment where:
 
 ## Portfolio Role
 
-This project represents the **data infrastructure layer** of my bioinformatics portfolio:
+This project represents the data management layer of a clinical NGS pipeline ecosystem:
 
-- Genomic Toolkit → sequence analysis tooling
-- NGS QC Pipeline → workflow processing logic
-- LIMS Database → structured biological data management system
+- LIMS Database → structured sample and metadata tracking
+- Genomic Toolkit → sequence processing utilities
+- NGS QC Pipeline → quality control and validation logic
 
-Together, these demonstrate end-to-end understanding of biological data systems.
-
+Together, these demonstrate end-to-end design of a clinical bioinformatics data system.
 ---
 
 ## Future Improvements
