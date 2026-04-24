@@ -1,117 +1,110 @@
-# Laboratory Information Management System (LIMS)
+# Clinical LIMS Database
 
-Clinical LIMS database for structured sample tracking and metadata management within an NGS pipeline system supporting QC and downstream sequencing analysis.
-
----
+Relational database system for structured sample tracking, metadata management, and laboratory workflow organization within a clinical NGS data pipeline.
 
 ## System Context
 
-This LIMS models the data management layer of a clinical NGS pipeline, where biological samples are tracked from project initiation through processing and instrument usage.
+This LIMS represents the data infrastructure layer of a clinical NGS system, enabling traceability of samples, instruments, and project-based workflows.
 
-It provides structured traceability for:
-- sample metadata and project association
-- instrument assignment and usage tracking
-- laboratory workflow state management
-- downstream compatibility with QC and sequencing analysis systems
-  
----
-## System Design
+It integrates with:
 
-The database is structured around core laboratory entities:
+- NGS QC Pipeline → sequencing quality validation
+- Genomic Toolkit → sequence processing utilities
+- LIMS Database (this system) → structured sample and workflow tracking
 
-- **Employees** manage and process laboratory work
-- **Projects** define analytical requests from clients
-- **Samples** represent physical lab materials linked to projects
-- **Instruments** are used to process samples
-- **Supplies** track lab inventory usage
+Together, these components support end-to-end NGS data lifecycle management.
 
----
+## Data Model Overview
+
+Core entities in the system:
+
+- Projects → client-driven sequencing requests
+- Samples → biological materials linked to projects
+- Instruments → sequencing and processing hardware
+- Employees → operational and processing roles
+- Supplies → laboratory inventory tracking
 
 ## Entity Relationships
+- A Project contains multiple Samples
+- A Sample belongs to one Project
+- An Instrument may be associated with Samples and/or Employees
+- Employees manage and execute laboratory operations
 
-- A **Project** can have multiple **Samples**
-- A **Sample** belongs to one **Project**
-- An **Instrument** may be assigned to an **Employee** and/or **Sample**
-- **Employees** support instrument operation and sample processing
+## Core System Features
+**Relational Schema Design**
 
----
+Normalized database structure with enforced primary and foreign key constraints to maintain data integrity across laboratory entities.
 
-## Key Features
+**Automated Key Management**
 
-### Relational Schema Design
-- Normalized table structure for core lab entities
-- Primary and foreign key constraints for data integrity
+Sequence-based surrogate key generation for consistent entity identification across all core tables.
 
-### Automated Key Management
-- Sequence-generated surrogate keys for all major entities
+**Audit Tracking**
 
-### Audit Trail Support
-- Automatic tracking of:
-  - record creation
-  - modification timestamps
-  - user attribution
+Automatic recording of:
 
-### Views for Data Abstraction
-- Simplified access layers for:
-  - Employees
-  - Projects
-  - Samples
-  - Instruments
-  - Supplies
+- record creation timestamps
+- modification timestamps
+- user attribution
 
-### Indexing Strategy
-- Optimized lookup performance for:
-  - batch tracking
-  - foreign key relationships
+## Data Abstraction Layer (Views)
 
----
+Simplified query interfaces for:
 
-## Example Use Case
+- Employees
+- Projects
+- Samples
+- Instruments
+- Supplies
 
-This system could support workflows such as:
+## Performance Optimization
 
-1. A client submits a **Project**
-2. The lab creates one or more **Samples**
-3. Samples are assigned to **Instruments**
-4. Employees process and track sample status
-5. Results and workflow state are queryable via views
+Indexing strategy implemented for:
 
----
+- batch-level sample tracking
+- foreign key joins
+- high-frequency query paths
 
-## Technologies Used
+## Workflow Example
 
+Typical system usage flow:
+
+1. A Project is created for a sequencing request
+2. One or more Samples are registered under the project
+3. Samples are associated with Instruments for processing
+4. Employees manage and execute laboratory operations
+5. Data is queried through structured views for downstream QC and reporting
+
+## Technology Stack
 - SQL (Oracle dialect)
-- Sequences for surrogate keys
-- Triggers for automation
-- Views for abstraction
-- Indexing for query performance
+- Sequences for key generation
+- Triggers for automation (audit + IDs)
+- Views for query abstraction
+- Indexing for relational performance
 
----
+## System Role
 
-## Design Intent
+This database functions as the structural layer of a clinical NGS pipeline ecosystem:
 
-This system was designed to simulate a real-world laboratory environment where:
-- samples must be traceable
-- instruments require assignment tracking
-- workflows depend on structured data relationships
-- auditability is required for operational integrity
-
----
-
-## Portfolio Role
-
-This project represents the data management layer of a clinical NGS pipeline ecosystem:
-
-- LIMS Database → structured sample and metadata tracking
+- LIMS Database → sample and workflow tracking
+- NGS QC Pipeline → quality evaluation and decisioning
 - Genomic Toolkit → sequence processing utilities
-- NGS QC Pipeline → quality control and validation logic
 
-Together, these demonstrate end-to-end design of a clinical bioinformatics data system.
----
+This architecture models a simplified clinical bioinformatics data system from sample intake to sequencing validation.
 
-## Future Improvements
+## Design Focus
+- Traceable sample and workflow state management
+- Structured relational data modeling
+- Auditability for operational tracking
+- Compatibility with downstream bioinformatics pipelines
 
-- REST API layer for database access
-- Integration with Python-based pipeline tools
-- Enhanced normalization (3NF validation pass)
-- Role-based access control (RBAC)
+## Future Enhancements
+- REST API layer for programmatic access
+- Integration with Python-based QC pipeline tools
+- Schema normalization review (3NF refinement)
+- Role-based access control (RBAC) implementation
+
+## Author
+
+### Shiloh Cadere
+### Bioinformatics Analyst | Clinical NGS Pipelines | Python • SQL • R
